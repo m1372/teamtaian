@@ -18,6 +18,6 @@ def LineNotify(mode):
  
 #出力させる箇所に記述（テキストとスタンプ）
 message = "明日の出演情報は"
-stickerPackageId = "1"
-stickerId = "12"
+stickerPackageId = "3"
+stickerId = "227"
 LineNotify("stamp")
