@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import sys
 from time import sleep
  
-query = "鳳月杏"
+query = "西島秀俊"
 url = "https://tv.yahoo.co.jp/search/?q="+query+"&t=1%202%203&a=23&oa=1&s=1" #地上波、BS、CS　地域設定：東京
 res = requests.get(url)
 status = res.status_code
@@ -98,17 +98,20 @@ else:
         def LineNotify(mode):
             line_notify_token = "CSovvMnibCrRem01t0NoAjjXcWGQHVAtZYpFFF2D1eb"
             line_notify_api = "https://notify-api.line.me/api/notify"
-            payload = {"message": message}
-            headers = {"Authorization": "Bearer " + line_notify_token}
-            requests.post(line_notify_api, data=payload, headers=headers)
+            if (mode == "text"):
+	            payload = {"message":message}
+            elif (mode == "stamp"):
+                payload = {"message":message, "stickerPackageId": stickerPackageId, "stickerId": stickerId}
+            headers = {"Authorization":"Bearer " + line_notify_token}
+            requests.post(line_notify_api, data = payload, headers = headers)
         message = "新しい番組情報です\n\n" + L
-        LineNotify(message)
+        LineNotify("text")
         sleep(3)
-    
-    #message = "録画をお忘れなく！"
-    #stickerPackageId = "3"
-    #stickerId = "227"
-    #LineNotify("stamp")
+
+message = "録画をお忘れなく！"
+stickerPackageId = "3"
+stickerId = "227"
+LineNotify("stamp")
  
 f = open('hogehoge.txt', 'w')   # 書き込みモードで開く
 for x in list_new:
