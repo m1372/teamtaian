@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import sys
 from time import sleep
  
-query = "玉森裕太"
+query = "鳳月杏"
 url = "https://tv.yahoo.co.jp/search/?q="+query+"&t=1%202%203&a=23&oa=1&s=1" #地上波、BS、CS　地域設定：東京
 res = requests.get(url)
 status = res.status_code
