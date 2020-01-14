@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import sys
 from time import sleep
  
-query = "乃木坂46"
+query = "玉森裕太"
 url = "https://tv.yahoo.co.jp/search/?q="+query+"&t=1%202%203&a=23&oa=1&s=1" #地上波、BS、CS　地域設定：東京
 res = requests.get(url)
 status = res.status_code
@@ -104,6 +104,11 @@ else:
         message = "新しい番組情報です\n\n" + L
         LineNotify(message)
         sleep(3)
+    
+    #message = "録画をお忘れなく！"
+    #stickerPackageId = "3"
+    #stickerId = "227"
+    #LineNotify("stamp")
  
 f = open('hogehoge.txt', 'w')   # 書き込みモードで開く
 for x in list_new:
